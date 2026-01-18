@@ -1,0 +1,108 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	font-family: 'Bitter', serif;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.first-form
+{
+	margin-left: 1%;
+	margin-right: 78%;
+	background-image: url("Photo/cars.png");
+}
+
+.first-form img
+{
+	opacity: 0.5;
+}
+
+/* ------header------ */
+
+.site-header { 
+  border: 1px ridge #A9B5FF;
+  border-bottom: 1px solid #ccc;
+  padding: .5em 1em;
+	
+  background: linear-gradient(-45deg, #764cd9, #3c1499, #c4125c, #630222);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+.site-header::after {
+  content: "";
+  display: table;
+  clear: both;
+	max-height: 78px;
+}
+
+.site-identity {
+  float: left;
+}
+
+.site-identity h1 {
+	padding-bottom: 5px;
+	margin: 2px;
+  display: inline-block;
+}
+
+
+.site-navigation {
+  float: right;
+}
+
+.site-navigation li {
+  padding: 0;
+  display: inline-block;
+  margin: 1.4em 1em 1em 1em;
+}
+
+/* ------bg animations------ */
+
+.bg {
+  animation:slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, #4e18cc 50%, #764cd9 50%);
+  bottom:0;
+  left:-50%;
+  opacity:.5;
+  position:fixed;
+  right:-50%;
+  top:0;
+  z-index:-1;
+}
+
+.bg2 {
+  animation-direction:alternate-reverse;
+  animation-duration:4s;
+}
+
+.bg3 {
+  animation-duration:5s;
+}
+
+@keyframes slide {
+  0% {
+    transform:translateX(-25%);
+  }
+  100% {
+    transform:translateX(25%);
+  }
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
