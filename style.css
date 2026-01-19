@@ -11,16 +11,10 @@ a {
   font-weight: bold;
 }
 
-.first-form
-{
+.first-form {
 	margin-left: 1%;
 	margin-right: 78%;
 	background-image: url("Photo/cars.png");
-}
-
-.first-form img
-{
-	opacity: 0.5;
 }
 
 /* ------header------ */
@@ -58,9 +52,53 @@ a {
 }
 
 .site-navigation li {
+  font-size: 18px;
   padding: 0;
   display: inline-block;
   margin: 1.4em 1em 1em 1em;
+}
+
+/* ----------- */
+
+.photo_car1
+{
+  float: right; 
+  border: 5px solid black;
+  border-radius: 8px;
+}
+
+.photo_avatar {
+	margin-top: 20px;
+	border-radius: 50px;
+}
+
+.border_gallery {
+  margin-top: 20px;
+  border: 5px solid black;
+  border-radius: 8px;
+}
+
+.border_gallery img {
+  border-radius: 8px;
+}
+
+/* ------cursor tail animation------ */
+
+.cursor-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.cursor-dot {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: linear-gradient(135deg, #ad0d9d, #630222);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  will-change: transform, left, top;
 }
 
 /* ------bg animations------ */
@@ -105,4 +143,66 @@ a {
     100% {
         background-position: 0% 50%;
     }
+}
+
+/* ------mini-car animation bounce------ */
+
+.bounce {
+  animation: bounce 1.2s infinite ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(0.9);
+  }
+}
+
+/* ------mini-car animation running------ */
+
+.runner-container {
+	position: fixed;
+	bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+    z-index: 2;
+    }
+
+.runner {
+    position: absolute;
+    bottom: 20px;
+    width: 150px;
+    animation: run-left 8s linear infinite;
+    }
+
+@keyframes run-left {
+      from {
+        transform: translateX(100vw);
+      }
+      to {
+        transform: translateX(-150px);
+      }
+    }
+
+/* ------mini-car animation bounce 2------ */
+
+.bounce_2 {
+  animation: bounce 1.2s infinite ease-in-out;
+  width: 200px;
+  position: absolute;
+  margin-left: 15px;
+  margin-top: 15px;
+}
+
+@keyframes bounce_2 {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.85);
+  }
 }

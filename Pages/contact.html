@@ -3,39 +3,104 @@
 <head>
 <meta charset="utf-8">
 <title>My contact</title>
+	<link rel="stylesheet" type="text/css" href="../style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Bitter&display=swap" rel="stylesheet">
 </head>
 
-<body bgcolor="#9E8AFF">
-	<table width="100%" bgcolor="#D0D0D0">
-    <tr>
-        <td>
-            <h1>My best car Volkswagen Jetta MK2 ❤️</h1>
-        </td>
-        <td align="right">
-            <font size="4">  <a href="../index.html">Home</a> | <a href="contact.html">Contact</a> | <a href="gallery.html">Gallery</a> </font>
-        </td>
-    </tr>
-</table>
+<body>
+<header class="site-header">
+  <div class="site-identity">
+    <img src="../Photo/Logo.png" width="55" height="55" alt="Логотип" style="padding-top: 10px;">
+    <h1 style="position: absolute; top: 26px; left: 113px;"> My best car Volkswagen Jetta MK2 ❤️ </h1>
+  </div>  
+	
+  <nav class="site-navigation">
+      <li><a href="../index.html">Home</a></li> 
+      <li><a href="contact.html">Contact</a></li> 
+      <li><a href="gallery.html">Gallery</a></li> 
+  </nav>
+</header>
 	
 	<center>
-        <img src="../Photo/My photo.jpg" alt="My photo" width="350" height="360">
+        <img src="../Photo/My photo.jpg" alt="My photo" width="350" height="360" class="photo_avatar">
         <h2>Viktoriia Silchenko</h2>
 
         <table>
             <tr>
-                <td><a href="https://t.me/WhatTheCoffee" target="_blank">Telegram</a></td>
+                <td><a href="https://t.me/WhatTheCoffee" target="_blank"><u>Telegram</u></a></td>
             </tr>
             <tr>
-                <td><a href="https://www.facebook.com/WhatTheCoffee28/" target="_blank">Facebook</a></td>
+                <td><a href="https://www.facebook.com/WhatTheCoffee28/" target="_blank"><u>Facebook</u></a></td>
             </tr>
             <tr>
-                <td><a href="https://www.linkedin.com/in/вікторія-сільченко-54309a35b/" target="_blank">LinkedIn</a></td>
+                <td><a href="https://www.linkedin.com/in/вікторія-сільченко-54309a35b/" target="_blank"><u>LinkedIn</u></a></td>
             </tr>
             <tr>
-                <td><a href="https://www.instagram.com/what.the.coffee/" target="_blank">Instagram</a></td>
+                <td><a href="https://www.instagram.com/what.the.coffee/" target="_blank"><u>Instagram</u></a></td>
             </tr>
-        </table>
+			<tr>
+                <td><a href="https://www.tiktok.com/@what.the.coffee" target="_blank"><u>TikTok</u></a></td>
+            </tr>
+        </table> 
+		
     </center>
 	
+ <!------mini-car animation------>
+	
+ <div class="runner-container"> <a href="https://www.youtube.com/watch?v=NjgGc1fNYU0"> <img src="../Photo/Jetta art.png" alt="Running image" class="runner"> </a> </div>
+	
+	<!------bg animation------>
+	
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
+	
+	<!------cursor tail animation------>
+	
+<div class="cursor-container">
+  <div class="cursor-dot"></div>
+  <div class="cursor-dot"></div>
+  <div class="cursor-dot"></div>
+  <div class="cursor-dot"></div>
+  <div class="cursor-dot"></div>
+  <div class="cursor-dot"></div>
+  <div class="cursor-dot"></div>
+</div>
+
+<script>
+  const dots = document.querySelectorAll('.cursor-dot');
+
+  let mouseX = 0;
+  let mouseY = 0;
+
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  let positions = Array.from(dots).map(() => ({ x: mouseX, y: mouseY }));
+
+  function animate() {
+    positions[0].x += (mouseX - positions[0].x) * 0.3;
+    positions[0].y += (mouseY - positions[0].y) * 0.3;
+
+    for (let i = 1; i < positions.length; i++) {
+      positions[i].x += (positions[i - 1].x - positions[i].x) * 0.3;
+      positions[i].y += (positions[i - 1].y - positions[i].y) * 0.3;
+    }
+
+    dots.forEach((dot, i) => {
+      dot.style.left = positions[i].x + 'px';
+      dot.style.top = positions[i].y + 'px';
+      dot.style.transform = `translate(-50%, -50%) scale(${1 - i * 0.08})`;
+      dot.style.opacity = `${1 - i * 0.1}`;
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+</script>
+
 </body>
 </html>

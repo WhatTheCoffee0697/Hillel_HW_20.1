@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <title>My car VW Jetta MK2</title>
-<link rel="stylesheet" type="text/css" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Bitter&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Bitter&display=swap" rel="stylesheet">
 </head>
 
 <body>
-	
+
 <header class="site-header">
   <div class="site-identity">
     <img src="Photo/Logo.png" width="55" height="55" alt="Логотип" style="padding-top: 10px;">
@@ -22,17 +22,13 @@
   </nav>
 </header>
 	
-<div class="bg"></div>
-<div class="bg bg2"></div>
-<div class="bg bg3"></div>
 
 <table width="100%">
     <tr>
         <td align="center">
             <h2> My name is Viktoriia, I am 21 years old, and I am a happy owner of a car Volkswagen Jetta MK2, that is 38 years old. I have known her for 11 years, since her first appeared in our family.<br>
-			In 2010 my father bought this foreign car - at that time it was considered a cool and expensive car. In 2023, after getting my driver’s license, I took this car for myself, re-registered it to me, and now I am working on its full restoration and enjoying every moment with this beautiful car!
-        </h2></td>
-
+			In 2010 my father bought this foreign car - at that time it was considered a cool and expensive car. In 2023, after getting my driver’s license, I took this car for myself, re-registered it to me, and now I am working on its full restoration and enjoying every moment with this beautiful car!	<br><br>
+<a href="https://www.youtube.com/watch?v=kBYwT8zeyvw"> <img src="Photo/Jetta art.png" width="160" alt="Bouncing Jetta" class="bounce"> </a> </h2></td>
         <td align="right">
             <img src="Photo/me_with_car.jpg" width="400" alt="Me with car" style="float: right; border: 5px double black;">
         </td>
@@ -78,15 +74,15 @@
     </tr>
 	<br>
 
-	<td align="right">
-            <img src="Photo/Car 1.jpg" width="500" alt="Me with car" style="float: right; border: 5px solid black;">
+	   <td align="right">
+            <img src="Photo/Car 1.jpg" width="500" alt="Me with car" class="photo_car1">
         </td>
 	
 	</tr>
 </table>
 	
 	<hr>
-	<h3>If you want more details, you can contact me through this form or by going to the <a href="Pages/contact.html"> <i> “Contact” page </i> </a> </h3>
+	<h3>If you want more details, you can contact me through this form or by going to the <a href="Pages/contact.html"> <u> “Contact” page </u> </a> </h3>
 	<form class="first-form">
         <p>
             <label>Name<br>
@@ -105,5 +101,58 @@
         </p>
     </form>
 	
+	<!------bg animation------>
+	
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
+	
+	<!------cursor tail animation------>
+	
+<div class="cursor-container">
+  <div class="cursor-dot"></div>
+  <div class="cursor-dot"></div>
+  <div class="cursor-dot"></div>
+  <div class="cursor-dot"></div>
+  <div class="cursor-dot"></div>
+  <div class="cursor-dot"></div>
+  <div class="cursor-dot"></div>
+</div>
+
+<script>
+  const dots = document.querySelectorAll('.cursor-dot');
+
+  let mouseX = 0;
+  let mouseY = 0;
+
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  let positions = Array.from(dots).map(() => ({ x: mouseX, y: mouseY }));
+
+  function animate() {
+    positions[0].x += (mouseX - positions[0].x) * 0.3;
+    positions[0].y += (mouseY - positions[0].y) * 0.3;
+
+    for (let i = 1; i < positions.length; i++) {
+      positions[i].x += (positions[i - 1].x - positions[i].x) * 0.3;
+      positions[i].y += (positions[i - 1].y - positions[i].y) * 0.3;
+    }
+
+    dots.forEach((dot, i) => {
+      dot.style.left = positions[i].x + 'px';
+      dot.style.top = positions[i].y + 'px';
+      dot.style.transform = `translate(-50%, -50%) scale(${1 - i * 0.08})`;
+      dot.style.opacity = `${1 - i * 0.1}`;
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+</script>
+
 </body>
 </html>
